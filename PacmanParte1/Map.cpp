@@ -7,10 +7,10 @@ Map::Map()
 	const char* Map_Load[] = {
 		{"##  ####################################  ##"},
 		{"#..........................................#"},
-		{" .##################    ##################. "},
+		{" .################## @  ##################. "},
 		{" .#......................................#. "},
 		{"#.#.################ ## ################.#.#"},
-		{"#.#.#                ##                #.#.#"},
+		{"#.#.#        @       ##                #.#.#"},
 		{"#.#.  # ############################ #  .#.#"},
 		{"#.#.# # #            ##              # #.#.#"},
 		{"#. .# # # ########## ## ############ # #. .#"},
@@ -18,10 +18,10 @@ Map::Map()
 		{"#. .# # # ########## ## ############ # #. .#"},
 		{"#.#.# # #            ##              # #.#.#"},
 		{"#.#.  # ############################ #  .#.#"},
-		{"#.#.#                ##                #.#.#"},
+		{"#.#.#                ##               @#.#.#"},
 		{"#.#.################ ## ################.#.#"},
 		{" .#......................................#. "},
-		{" .##################    ##################. "},
+		{"@.##################    ##################. "},
 		{"#..........................................#"},
 		{"##  ####################################  ##"}
 	};
@@ -57,9 +57,12 @@ Map::Map()
 	foregrounds[MAP_TILES::MAP_EMPTY] = ConsoleUtils::CONSOLE_COLOR::BLACK;
 	foregrounds[MAP_TILES::MAP_WALL] = ConsoleUtils::CONSOLE_COLOR::DARK_BLUE;
 	foregrounds[MAP_TILES::MAP_POINT] = ConsoleUtils::CONSOLE_COLOR::DARK_YELLOW;
+	foregrounds[MAP_TILES::MAP_POWERUP] = ConsoleUtils::CONSOLE_COLOR::WHITE;
 	backgrounds[MAP_TILES::MAP_EMPTY] = ConsoleUtils::CONSOLE_COLOR::BLACK;
 	backgrounds[MAP_TILES::MAP_WALL] = ConsoleUtils::CONSOLE_COLOR::DARK_BLUE;
 	backgrounds[MAP_TILES::MAP_POINT] = ConsoleUtils::CONSOLE_COLOR::BLACK;
+	backgrounds[MAP_TILES::MAP_POWERUP] = ConsoleUtils::CONSOLE_COLOR::BLACK;
+
 }
 
 Map::~Map()

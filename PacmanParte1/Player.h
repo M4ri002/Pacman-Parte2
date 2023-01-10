@@ -14,6 +14,7 @@ private:
 
 public:
 	Player(COORD spawn);
+	
 	void Update(Map* pacman_map, GlobalResources::USER_INPUTS input, std::vector<Enemy> enemigos);
 	void Draw();
 	

@@ -8,6 +8,9 @@ Player::Player(COORD spawn)
    PlayerPosition = spawn;
 }
 
+
+
+
 void Player::Update(Map* pacman_map, GlobalResources::USER_INPUTS input, std::vector<Enemy> enemigos)
 {
 
@@ -20,6 +23,7 @@ void Player::Update(Map* pacman_map, GlobalResources::USER_INPUTS input, std::ve
         if (enemigos[i].Logic(pacman_map, playerPos))
         {
             playerDie = true;
+            
         }
     }
     if (playerDie)
@@ -66,6 +70,11 @@ void Player::Update(Map* pacman_map, GlobalResources::USER_INPUTS input, std::ve
     case Map::MAP_TILES::MAP_POINT:
         pacman_map->points--;
         player_points++;
+        pacman_map->SetTile(player_x_new, player_y_new, Map::MAP_TILES::MAP_EMPTY);
+        break;
+    case Map::MAP_TILES::MAP_POWERUP:
+        player_points += 25;
+        //Como llamar a la funcion de enemigo desde aqui Enemy::PowerUpPicked();
         pacman_map->SetTile(player_x_new, player_y_new, Map::MAP_TILES::MAP_EMPTY);
         break;
     }

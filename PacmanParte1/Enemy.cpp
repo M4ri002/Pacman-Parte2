@@ -1,5 +1,4 @@
 #include "Enemy.h"
-#include "TimeManager.h"
 #include <cstdlib>
 
 Enemy::Enemy(COORD spawn)
@@ -7,8 +6,17 @@ Enemy::Enemy(COORD spawn)
 	position = spawn;
 }
 
+void Enemy::PowerUpPicked()
+{
+	powerup_countdown = TimeManager::getInstance().time + powerup_countdown_time;
+}
+
+
+
+
 bool Enemy::Logic(Map* pacman_map, COORD playerPosition)
 {
+	
 	int dir = rand() % 4; //Numero random de 0 a 4
 	COORD position_new = position;
 	switch (dir)
@@ -45,7 +53,31 @@ bool Enemy::Logic(Map* pacman_map, COORD playerPosition)
 		position = position_new;
 	}
 
+	if (position.X == playerPosition.X && position.Y == playerPosition.Y)
+	{
+		if (powerup_countdown <= TimeManager::getInstance().time)
+		{
+			//muere el jugador
+		}
+		else
+		{
+			//como hacer que muera el enemigo
+		}
+	}
+	if (powerup_countdown <= TimeManager::getInstance().time)
+	{
+
+		foreground = foreground_attack;
+	}
+	else
+	{
+		
+
+		foreground = foreground_powerup;
+	}
+
 	return position.X == playerPosition.X && position.Y == playerPosition.Y;
+
 }
 
 
@@ -56,3 +88,5 @@ void Enemy::Draw()
 	std::cout << character;
 	
 }
+
+
